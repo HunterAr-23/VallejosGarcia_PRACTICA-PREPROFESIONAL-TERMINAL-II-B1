@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Actividad 1 de Práctica Preprofesional Terminal II: estudio de ingeniería de métodos para RUFIO.">
+  <title>Actividad 1 | Ingeniería de Métodos · RUFIO</title>
+  <style>
+    :root { --navy:#061b45; --deep:#031230; --blue:#1d61c7; --red:#e30613; --red-light:#ff5361; --ink:#0b1730; --muted:#536b8d; --line:#c9d8ef; --soft:#eef5ff; --radius:18px; }
+    * { box-sizing:border-box; }
+    html { background:var(--deep); }
+    body { margin:0; overflow:hidden; color:var(--ink); background:var(--deep); font-family:Arial, Helvetica, sans-serif; }
+    button { font:inherit; } img { display:block; max-width:100%; } h1,h2,h3,p { margin:0; }
+    .presentation { min-height:100vh; }
+    .slide { display:none; position:relative; min-height:100vh; padding:5.8rem 9vw 6rem; overflow:auto; background:#fff; }
+    .slide.is-active { display:flex; flex-direction:column; justify-content:center; }
+    .slide--dark,.slide--cover { color:#fff; background:radial-gradient(circle at 88% 18%,rgba(29,97,199,.95),transparent 28%),linear-gradient(130deg,var(--deep),#092966); }
+    .eyebrow { margin:0 0 .9rem; color:var(--red); font:700 .76rem/1.3 Consolas,monospace; letter-spacing:.12em; }
+    h1 { max-width:730px; font-size:clamp(3rem,6vw,6rem); line-height:.96; letter-spacing:-.045em; }
+    h2 { max-width:850px; font-size:clamp(2.1rem,4vw,4rem); line-height:1.05; letter-spacing:-.035em; }
+    .lead { max-width:750px; margin-top:1rem; font-size:clamp(1rem,1.4vw,1.2rem); line-height:1.6; }
+    .accent { color:var(--red-light); }
+    .identity { position:absolute; z-index:2; top:1.6rem; left:9vw; padding:.48rem .72rem; border-radius:9px; background:#fff; box-shadow:0 6px 20px rgba(0,0,0,.16); }
+    .identity img { width:150px; }
+    .partner-logo { position:absolute; z-index:2; top:1.6rem; right:9vw; width:120px; padding:.35rem; border-radius:8px; background:#fff; }
+    .cover-image { position:absolute; top:20%; right:8vw; width:min(32vw,530px); height:58vh; object-fit:cover; border-radius:var(--radius); box-shadow:20px 20px rgba(227,6,19,.62); }
+    .slide--cover .lead { max-width:min(50vw,670px); }
+    .author { position:absolute; bottom:2rem; color:#d9e8ff; font-size:.8rem; letter-spacing:.04em; }
+    .author strong { display:block; margin-top:.35rem; color:#fff; letter-spacing:0; }
+    .two-columns { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,1fr); gap:clamp(2rem,5vw,5rem); align-items:center; }
+    .image-panel { position:relative; min-height:340px; overflow:hidden; border-radius:var(--radius); background:#102048; box-shadow:16px 16px var(--line); }
+    .image-panel img { width:100%; height:100%; min-height:340px; object-fit:cover; }
+    .image-panel--workshop img { object-position:center 42%; }
+    .image-caption { position:absolute; right:0; bottom:0; left:0; padding:2.2rem 1rem 1rem; color:#fff; background:linear-gradient(transparent,rgba(6,27,69,.94)); font:700 .7rem/1.4 Consolas,monospace; letter-spacing:.04em; }
+    .callout { padding:1.3rem; border:1px solid var(--line); border-radius:14px; background:var(--soft); line-height:1.55; }
+    .callout--spaced { margin-top:1.3rem; } .slide--dark .callout { border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.07); }
+    .process,.cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; } .process .callout { min-height:130px; }
+    .card { min-height:175px; padding:1.25rem; color:var(--ink); border-top:5px solid var(--red); border-radius:14px; background:#fff; box-shadow:0 10px 25px rgba(18,61,113,.12); }
+    .card p { margin-top:.7rem; color:var(--muted); font-size:.92rem; line-height:1.5; }
+    .data-table { width:100%; margin-top:1.4rem; border-collapse:collapse; } .data-table th { padding:.75rem; color:#fff; background:var(--navy); text-align:left; } .data-table td { padding:.75rem; border-bottom:1px solid var(--line); } .data-table tr:nth-child(even) td { background:#f8fbff; }
+    .formula { margin:.7rem 0; color:var(--red); font-size:clamp(1.25rem,2vw,1.7rem); line-height:1.2; }
+    .image-grid { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; margin-top:1.35rem; } .image-grid .image-panel,.image-grid .image-panel img { min-height:210px; }
+    .slide-nav { position:fixed; z-index:10; right:3vw; bottom:1.5rem; display:flex; align-items:center; gap:.35rem; padding:.45rem; border:1px solid rgba(255,255,255,.18); border-radius:999px; background:rgba(6,27,69,.94); box-shadow:0 8px 25px rgba(0,0,0,.2); }
+    .slide-nav button { width:42px; height:42px; color:var(--navy); border:0; border-radius:50%; background:#fff; cursor:pointer; font-size:1.2rem; transition:transform .2s,background .2s; }
+    .slide-nav button:hover { background:#dce9ff; transform:translateY(-1px); } .slide-nav button:focus-visible,.slide-dots button:focus-visible { outline:3px solid #ffd14d; outline-offset:3px; }
+    .slide-count { min-width:54px; color:#fff; font:700 .75rem/1 Consolas,monospace; text-align:center; }
+    .slide-dots { position:fixed; z-index:10; top:50%; left:2vw; display:grid; gap:9px; transform:translateY(-50%); }
+    .slide-dots button { width:8px; height:8px; padding:0; border:0; border-radius:8px; background:#b6c6de; cursor:pointer; transition:height .2s,background .2s; } .slide-dots button[aria-current="true"] { height:23px; background:var(--red); }
+    @media (max-width:760px) { body { overflow:auto; } .slide { min-height:100svh; padding:5.5rem 8vw 6.5rem; } .slide.is-active { justify-content:flex-start; } .two-columns,.process,.cards,.image-grid { grid-template-columns:1fr; } .cover-image { position:relative; top:auto; right:auto; width:100%; height:280px; margin-top:1.5rem; box-shadow:12px 12px rgba(227,6,19,.62); } .slide--cover .lead { max-width:100%; } .image-panel,.image-panel img { min-height:260px; } .slide-dots { display:none; } .identity { left:8vw; } .partner-logo { right:8vw; width:95px; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <main class="presentation" aria-label="Presentación de la Actividad 1">
+    <section class="slide slide--cover is-active" aria-labelledby="cover-title"><div class="identity"><img src="assets/ucv-logo.png" alt="Logo de la Universidad César Vallejo"></div><img class="partner-logo" src="assets/rufio-logo.jpeg" alt="Logo de RUFIO"><img class="cover-image" src="assets/ambulancias.jpg" alt="Ambulancias fabricadas por RUFIO"><p class="eyebrow">PRÁCTICA PREPROFESIONAL TERMINAL II · B1</p><h1 id="cover-title"><span class="accent">Actividad 1</span><br>Ingeniería de Métodos</h1><p class="lead">Estudio del ensamblado de estructuras metálicas para mejorar la productividad en RUFIO.</p><p class="author">ESTUDIANTE<strong>Vallejos García Angel Romario · Lurín 2026</strong></p></section>
+    <section class="slide" aria-labelledby="context-title"><p class="eyebrow">01 · CONTEXTO REAL</p><div class="two-columns"><div><h2 id="context-title">El ensamblado requiere un método medible y repetible</h2><p class="lead">Preparar, posicionar, unir y verificar componentes determina el tiempo de entrega de una estructura metálica.</p><div class="callout callout--spaced">La mejora busca identificar esperas, traslados y ajustes que consumen tiempo sin agregar valor.</div></div><figure class="image-panel image-panel--workshop"><img src="assets/taller.jpg" alt="Área de fabricación del taller RUFIO"><figcaption class="image-caption">TALLER RUFIO · CONTEXTO DE FABRICACIÓN</figcaption></figure></div></section>
+    <section class="slide" aria-labelledby="area-title"><p class="eyebrow">02 · ÁREA DE APLICACIÓN</p><div class="two-columns"><div><h2 id="area-title">Ensamblado de estructuras metálicas</h2><p class="lead">El estudio se limita a la estación donde se prepara, arma, alinea, une y verifica cada estructura.</p><div class="callout callout--spaced"><strong>Unidad de análisis:</strong> una estructura metálica ensamblada.<br><br><strong>Inicio:</strong> materiales y herramientas disponibles.<br><strong>Fin:</strong> estructura lista para inspección final.</div></div><figure class="image-panel image-panel--workshop"><img src="assets/estructura.jpg" alt="Estructura metálica interior durante la etapa de ensamblaje"><figcaption class="image-caption">ESTRUCTURA INTERIOR · ETAPA DE ENSAMBLAJE</figcaption></figure></div></section>
+    <section class="slide slide--dark" aria-labelledby="independent-title"><p class="eyebrow">03 · VARIABLE INDEPENDIENTE</p><h2 id="independent-title">Ingeniería de Métodos</h2><p class="lead">El estudio del trabajo permite registrar, examinar y mejorar el método actual.</p><div class="process"><div class="callout"><strong>01 · Registrar</strong><br>Secuencia, tiempos, recorridos y recursos.</div><div class="callout"><strong>02 · Examinar</strong><br>Demoras y actividades sin valor.</div><div class="callout"><strong>03 · Estandarizar</strong><br>Método mejorado y control.</div></div></section>
+    <section class="slide" aria-labelledby="dependent-title"><p class="eyebrow">04 · VARIABLE DEPENDIENTE</p><div class="two-columns"><div><h2 id="dependent-title">Productividad del ensamblado</h2><table class="data-table"><thead><tr><th scope="col">Dimensión</th><th scope="col">Indicador</th><th scope="col">Unidad</th></tr></thead><tbody><tr><td>Tiempo</td><td>Tiempo de ciclo</td><td>min/estructura</td></tr><tr><td>Producción</td><td>Estructuras terminadas</td><td>estructuras/h-h</td></tr><tr><td>Calidad</td><td>Retrabajo</td><td>%</td></tr></tbody></table></div><div class="callout"><strong>Fórmula principal</strong><h3 class="formula">Productividad =<br>Unidades terminadas / Horas-hombre</h3>La comparación antes–después debe mantener condiciones equivalentes.</div></div></section>
+    <section class="slide" aria-labelledby="evidence-title"><p class="eyebrow">05 · EVIDENCIA A LEVANTAR</p><h2 id="evidence-title">Observar antes de proponer cambios</h2><div class="image-grid"><figure class="image-panel image-panel--workshop"><img src="assets/taller.jpg" alt="Materiales y recorridos dentro del taller"><figcaption class="image-caption">UBICACIÓN DE MATERIAL Y RECORRIDOS</figcaption></figure><figure class="image-panel image-panel--workshop"><img src="assets/estructura.jpg" alt="Estructura y herramientas usadas durante el ensamblaje"><figcaption class="image-caption">SECUENCIA, HERRAMIENTAS Y ESPERAS</figcaption></figure></div><p class="lead">Instrumentos: hoja de observación, diagrama de proceso, diagrama de recorrido y registro fotográfico fechado.</p></section>
+    <section class="slide" aria-labelledby="outcome-title"><p class="eyebrow">06 · REFERENTE DE RESULTADO</p><div class="two-columns"><div><h2 id="outcome-title">La calidad del ensamblado se refleja en el producto terminado</h2><p class="lead">El método mejorado debe reducir pérdidas de tiempo sin comprometer seguridad, calidad y funcionalidad.</p><div class="callout callout--spaced"><strong>Criterio:</strong> cada cambio debe reducir tiempo o desplazamiento, mantener calidad y poder estandarizarse.</div></div><figure class="image-panel"><img src="assets/interior-terminado.jpg" alt="Interior terminado de un vehículo equipado por RUFIO"><figcaption class="image-caption">INTERIOR TERMINADO · RUFIO</figcaption></figure></div></section>
+    <section class="slide slide--dark" aria-labelledby="plan-title"><p class="eyebrow">07 · PLAN DE TRABAJO</p><h2 id="plan-title">Secuencia del estudio</h2><div class="cards"><article class="card"><strong>FASE 01 · Levantamiento</strong><p>Observar el método actual y medir tiempos, recorridos e incidencias.</p></article><article class="card"><strong>FASE 02 · Análisis</strong><p>Construir diagramas e identificar actividades que no agregan valor.</p></article><article class="card"><strong>FASE 03 · Propuesta</strong><p>Comparar el nuevo método con la línea base.</p></article></div></section>
+    <section class="slide slide--dark" aria-labelledby="close-title"><p class="eyebrow">08 · CIERRE</p><div class="two-columns"><div><h2 id="close-title">La mejora comienza con <span class="accent">medir el método actual</span></h2><p class="lead">La Ingeniería de Métodos permitirá sustentar una propuesta para aumentar la productividad del ensamblado en RUFIO.</p></div><figure class="image-panel"><img src="assets/ambulancia-montana.jpg" alt="Ambulancia RUFIO en un entorno de montaña"><figcaption class="image-caption">RUFIO · VEHÍCULOS ESPECIALES Y EQUIPAMIENTO</figcaption></figure></div></section>
+  </main>
+  <div class="slide-dots" aria-label="Navegación por diapositivas"></div>
+  <nav class="slide-nav" aria-label="Controles de presentación"><button type="button" id="previous" aria-label="Diapositiva anterior">←</button><span class="slide-count" aria-live="polite"></span><button type="button" id="next" aria-label="Diapositiva siguiente">→</button></nav>
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const dots = document.querySelector('.slide-dots');
+    const count = document.querySelector('.slide-count');
+    let currentSlide = 0;
+    slides.forEach((slide, index) => { const dot = document.createElement('button'); dot.type = 'button'; dot.setAttribute('aria-label', `Ir a la diapositiva ${index + 1}`); dot.addEventListener('click', () => showSlide(index)); dots.append(dot); });
+    function showSlide(index) { currentSlide = (index + slides.length) % slides.length; slides.forEach((slide, slideIndex) => { const active = slideIndex === currentSlide; slide.classList.toggle('is-active', active); slide.setAttribute('aria-hidden', String(!active)); }); [...dots.children].forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === currentSlide))); count.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`; }
+    document.querySelector('#previous').addEventListener('click', () => showSlide(currentSlide - 1));
+    document.querySelector('#next').addEventListener('click', () => showSlide(currentSlide + 1));
+    document.addEventListener('keydown', event => { const target = event.target; if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target.isContentEditable) return; if (event.key === 'ArrowRight' || event.key === ' ') { event.preventDefault(); showSlide(currentSlide + 1); } if (event.key === 'ArrowLeft') { event.preventDefault(); showSlide(currentSlide - 1); } if (event.key === 'Home') { event.preventDefault(); showSlide(0); } if (event.key === 'End') { event.preventDefault(); showSlide(slides.length - 1); } });
+    showSlide(0);
+  </script>
+</body>
+</html>
