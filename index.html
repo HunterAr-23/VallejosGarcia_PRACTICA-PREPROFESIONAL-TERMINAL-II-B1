@@ -9,32 +9,32 @@
     :root { --navy:#061b45; --deep:#031230; --blue:#1d61c7; --red:#e30613; --paper:#fff; --soft:#eef5ff; --line:#c9d8ef; --ink:#0b1730; --muted:#536b8d; }
     * { box-sizing:border-box; }
     body { min-height:100vh; margin:0; color:var(--ink); background:var(--deep); font-family:Arial,Helvetica,sans-serif; }
-    .page { min-height:100vh; padding:2rem 8vw 4rem; background:radial-gradient(circle at 86% 8%,rgba(29,97,199,.9),transparent 25%),linear-gradient(135deg,var(--deep),#092966 56%,#fff 56%); }
+    .page { min-height:100vh; padding:1.4rem 8vw 2rem; background:radial-gradient(circle at 86% 8%,rgba(29,97,199,.9),transparent 25%),linear-gradient(135deg,var(--deep),#092966 52%,#fff 52%); }
     .top { display:flex; justify-content:space-between; align-items:flex-start; gap:1.5rem; }
     .logo { padding:.48rem .72rem; border-radius:9px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.16); } .logo img { display:block; width:150px; }
     .tag { margin:0; color:#d9e8ff; font:700 .75rem/1.4 Consolas,monospace; letter-spacing:.1em; text-align:right; }
-    .hero { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr); gap:4rem; align-items:center; max-width:1200px; min-height:46vh; margin:2.5rem auto 3rem; color:#fff; }
+    .hero { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr); gap:3rem; align-items:center; max-width:1200px; margin:1.6rem auto 1.8rem; color:#fff; }
     .eyebrow { margin:0 0 .8rem; color:#ff6874; font:700 .78rem/1.3 Consolas,monospace; letter-spacing:.12em; }
-    h1 { max-width:800px; margin:0; font-size:clamp(2.6rem,5.5vw,5.5rem); line-height:.98; letter-spacing:-.045em; }
-    .student { margin:1.3rem 0 0; color:#d9e8ff; font-size:1rem; line-height:1.6; } .student strong { color:#fff; }
+    h1 { max-width:800px; margin:0; font-size:clamp(2.35rem,4.7vw,4.6rem); line-height:.98; letter-spacing:-.045em; }
+    .student { margin:.9rem 0 0; color:#d9e8ff; font-size:1rem; line-height:1.5; } .student strong { color:#fff; }
     .report { padding:1.4rem; border:1px solid rgba(255,255,255,.2); border-radius:16px; background:rgba(255,255,255,.08); line-height:1.55; box-shadow:0 15px 30px rgba(0,0,0,.12); }
     .report small { display:block; margin-bottom:.5rem; color:#ff9ca4; font:700 .7rem/1.3 Consolas,monospace; letter-spacing:.1em; } .report strong { font-size:1.05rem; }
-    .activities { max-width:1200px; margin:0 auto; padding:2rem; border-radius:22px; background:var(--paper); box-shadow:0 18px 45px rgba(0,0,0,.2); }
-    .activities h2 { margin:0; font-size:clamp(1.7rem,3vw,2.4rem); letter-spacing:-.03em; } .activities > p { margin:.5rem 0 1.4rem; color:var(--muted); }
+    .activities { max-width:1200px; margin:0 auto; padding:1.45rem; border-radius:22px; background:var(--paper); box-shadow:0 18px 45px rgba(0,0,0,.2); }
+    .activities h2 { margin:0; font-size:clamp(1.55rem,2.7vw,2.15rem); letter-spacing:-.03em; } .activities > p { margin:.4rem 0 1rem; color:var(--muted); }
     .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
-    .activity { display:flex; min-height:180px; flex-direction:column; justify-content:space-between; padding:1.25rem; color:var(--ink); border:1px solid var(--line); border-radius:15px; background:#fff; text-decoration:none; transition:transform .2s,box-shadow .2s,border-color .2s; }
+    .activity { display:flex; min-height:145px; flex-direction:column; justify-content:space-between; padding:1.1rem; color:var(--ink); border:1px solid var(--line); border-radius:15px; background:#fff; text-decoration:none; transition:transform .2s,box-shadow .2s,border-color .2s; }
     .activity:hover { transform:translateY(-4px); border-color:var(--blue); box-shadow:0 12px 24px rgba(18,61,113,.14); } .activity:focus-visible { outline:3px solid #e30613; outline-offset:3px; }
     .number { color:var(--red); font:700 .75rem/1 Consolas,monospace; letter-spacing:.1em; } .activity h3 { margin:.65rem 0 0; font-size:1.18rem; line-height:1.18; } .activity span { color:var(--muted); font-size:.86rem; line-height:1.4; }
     .activity--current { border-top:5px solid var(--red); background:linear-gradient(145deg,#fff,#f2f7ff); } .activity--soon { border-style:dashed; background:#fafcff; cursor:default; } .activity--soon:hover { transform:none; border-color:var(--line); box-shadow:none; }
     .arrow { align-self:flex-end; color:var(--navy); font-size:1.35rem; } footer { max-width:1200px; margin:1.5rem auto 0; color:#d9e8ff; font-size:.78rem; text-align:center; }
-    @media (max-width:760px) { .page { padding:1.5rem 6vw 3rem; background:linear-gradient(160deg,var(--deep),#092966 53%,#fff 53%); } .top { align-items:center; } .tag { font-size:.6rem; } .logo img { width:110px; } .hero { grid-template-columns:1fr; gap:1.5rem; min-height:auto; margin:2.4rem auto; } .activities { padding:1.25rem; } .grid { grid-template-columns:1fr; } }
+    @media (max-width:760px) { .page { padding:1.5rem 6vw 3rem; background:linear-gradient(160deg,var(--deep),#092966 53%,#fff 53%); } .top { align-items:center; } .tag { font-size:.6rem; } .logo img { width:110px; } .hero { grid-template-columns:1fr; gap:1.2rem; min-height:auto; margin:1.8rem auto; } .activities { padding:1.25rem; } .grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <main class="page">
     <header class="top"><div class="logo"><img src="assets/ucv-logo.png" alt="Logo de la Universidad César Vallejo"></div><p class="tag">PRÁCTICA PREPROFESIONAL<br>TERMINAL II · B1</p></header>
     <section class="hero" aria-labelledby="course-title"><div><p class="eyebrow">PORTAFOLIO DE ACTIVIDADES · 2026</p><h1 id="course-title">Práctica Preprofesional<br>Terminal II</h1><p class="student">ESTUDIANTE<br><strong>Vallejos García Angel Romario</strong></p></div><aside class="report"><small>TÍTULO DE INFORME</small><strong>Aplicación de la Ingeniería de Métodos para incrementar la productividad del ensamblaje de estructuras metálicas en RUFIO S.A.C., Lurín, 2026.</strong></aside></section>
-    <section class="activities" aria-labelledby="activities-title"><h2 id="activities-title">Actividades del curso</h2><p>Selecciona una actividad para revisar su contenido.</p><div class="grid"><a class="activity activity--current" href="actividad-1-rufio.html"><div><p class="number">ACTIVIDAD 01</p><h3>Perfil del Ingeniero Industrial y Funciones</h3></div><span>Ver actividad <b class="arrow" aria-hidden="true">→</b></span></a><article class="activity activity--soon"><div><p class="number">ACTIVIDAD 02</p><h3>Próximamente</h3></div><span>Disponible en una próxima entrega.</span></article><article class="activity activity--soon"><div><p class="number">ACTIVIDAD 03</p><h3>Próximamente</h3></div><span>Disponible en una próxima entrega.</span></article><article class="activity activity--soon"><div><p class="number">ACTIVIDAD 04</p><h3>Próximamente</h3></div><span>Disponible en una próxima entrega.</span></article></div></section>
+    <section class="activities" aria-labelledby="activities-title"><h2 id="activities-title">Actividades del curso</h2><p>Haz clic en la actividad que deseas visualizar.</p><div class="grid"><a class="activity activity--current" href="actividad-1-rufio.html"><div><p class="number">ACTIVIDAD 01</p><h3>Perfil del Ingeniero Industrial y Funciones</h3></div><span>Haz clic para visualizar <b class="arrow" aria-hidden="true">→</b></span></a><article class="activity activity--soon"><div><p class="number">ACTIVIDAD 02</p><h3>Próximamente</h3></div><span>Disponible en una próxima entrega.</span></article><article class="activity activity--soon"><div><p class="number">ACTIVIDAD 03</p><h3>Próximamente</h3></div><span>Disponible en una próxima entrega.</span></article><article class="activity activity--soon"><div><p class="number">ACTIVIDAD 04</p><h3>Próximamente</h3></div><span>Disponible en una próxima entrega.</span></article></div></section>
     <footer>Universidad César Vallejo · Lurín, 2026</footer>
   </main>
 </body>
