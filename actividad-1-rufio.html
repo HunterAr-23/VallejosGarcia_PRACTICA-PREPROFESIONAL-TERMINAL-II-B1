@@ -46,7 +46,18 @@
     .slide-count { min-width:54px; color:#fff; font:700 .75rem/1 Consolas,monospace; text-align:center; }
     .slide-dots { position:fixed; z-index:10; top:50%; left:2vw; display:grid; gap:9px; transform:translateY(-50%); }
     .slide-dots button { width:8px; height:8px; padding:0; border:0; border-radius:8px; background:#b6c6de; cursor:pointer; transition:height .2s,background .2s; } .slide-dots button[aria-current="true"] { height:23px; background:var(--red); }
-    @media (max-width:760px) { body { overflow:auto; } .slide { min-height:100svh; padding:5.5rem 8vw 6.5rem; } .slide.is-active { justify-content:flex-start; } .two-columns,.process,.cards,.image-grid { grid-template-columns:1fr; } .cover-image { position:relative; top:auto; right:auto; width:100%; height:280px; margin-top:1.5rem; box-shadow:12px 12px rgba(227,6,19,.62); } .slide--cover .lead { max-width:100%; } .image-panel,.image-panel img { min-height:260px; } .slide-dots { display:none; } .identity { left:8vw; } .partner-logo { right:8vw; width:95px; } }
+    .activity-switcher { position:fixed; z-index:11; top:1.35rem; left:50%; transform:translateX(-50%); }
+    .activity-toggle { display:flex; align-items:center; gap:.65rem; padding:.75rem 1rem; color:#fff; border:1px solid rgba(255,255,255,.22); border-radius:12px; background:rgba(6,27,69,.94); box-shadow:0 8px 24px rgba(0,0,0,.18); cursor:pointer; font-weight:700; }
+    .activity-toggle:hover { background:#0c3270; } .activity-toggle:focus-visible,.activity-item:focus-visible { outline:3px solid #ffd14d; outline-offset:3px; }
+    .activity-toggle small { color:#c9d8ef; font:700 .68rem/1 Consolas,monospace; letter-spacing:.08em; }
+    .activity-menu { position:absolute; top:calc(100% + .55rem); left:50%; display:none; width:min(380px,84vw); padding:.55rem; transform:translateX(-50%); border:1px solid var(--line); border-radius:14px; background:#fff; box-shadow:0 16px 35px rgba(0,0,0,.25); }
+    .activity-switcher.is-open .activity-menu { display:block; }
+    .activity-menu h2 { padding:.55rem .65rem .7rem; color:var(--muted); font:700 .7rem/1.3 Consolas,monospace; letter-spacing:.09em; }
+    .activity-item { display:block; width:100%; padding:.85rem .8rem; color:var(--ink); border:0; border-radius:10px; background:transparent; text-align:left; text-decoration:none; cursor:pointer; }
+    .activity-item:hover { background:var(--soft); } .activity-item strong,.activity-item span { display:block; } .activity-item span { margin-top:.2rem; color:var(--muted); font-size:.82rem; line-height:1.35; }
+    .activity-item[aria-current="page"] { color:#fff; background:var(--navy); } .activity-item[aria-current="page"] span { color:#d9e8ff; }
+    .activity-soon { padding:.8rem; color:var(--muted); border-top:1px solid var(--line); font-size:.82rem; line-height:1.4; }
+    @media (max-width:760px) { body { overflow:auto; } .slide { min-height:100svh; padding:5.5rem 8vw 6.5rem; } .slide.is-active { justify-content:flex-start; } .two-columns,.process,.cards,.image-grid { grid-template-columns:1fr; } .cover-image { position:relative; top:auto; right:auto; width:100%; height:280px; margin-top:1.5rem; box-shadow:12px 12px rgba(227,6,19,.62); } .slide--cover .lead { max-width:100%; } .image-panel,.image-panel img { min-height:260px; } .slide-dots { display:none; } .identity { left:8vw; } .partner-logo { right:8vw; width:95px; } .activity-switcher { top:4.7rem; } .activity-toggle { padding:.62rem .8rem; font-size:.85rem; } }
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
   </style>
 </head>
@@ -62,6 +73,15 @@
     <section class="slide slide--dark" aria-labelledby="plan-title"><p class="eyebrow">07 · PLAN DE TRABAJO</p><h2 id="plan-title">Secuencia del estudio</h2><div class="cards"><article class="card"><strong>FASE 01 · Levantamiento</strong><p>Observar el método actual y medir tiempos, recorridos e incidencias.</p></article><article class="card"><strong>FASE 02 · Análisis</strong><p>Construir diagramas e identificar actividades que no agregan valor.</p></article><article class="card"><strong>FASE 03 · Propuesta</strong><p>Comparar el nuevo método con la línea base.</p></article></div></section>
     <section class="slide slide--dark" aria-labelledby="close-title"><p class="eyebrow">08 · CIERRE</p><div class="two-columns"><div><h2 id="close-title">La mejora comienza con <span class="accent">medir el método actual</span></h2><p class="lead">La Ingeniería de Métodos permitirá sustentar una propuesta para aumentar la productividad del ensamblado en RUFIO.</p></div><figure class="image-panel"><img src="assets/ambulancia-montana.jpg" alt="Ambulancia RUFIO en un entorno de montaña"><figcaption class="image-caption">RUFIO · VEHÍCULOS ESPECIALES Y EQUIPAMIENTO</figcaption></figure></div></section>
   </main>
+  <div class="activity-switcher" id="activity-switcher">
+    <button class="activity-toggle" type="button" id="activity-toggle" aria-expanded="false" aria-controls="activity-menu"><span><small>PRÁCTICA PREPROFESIONAL</small><br>Actividades</span><span aria-hidden="true">⌄</span></button>
+    <div class="activity-menu" id="activity-menu">
+      <h2>SELECCIONA UNA ACTIVIDAD</h2>
+      <a class="activity-item" href="index.html"><strong>Portada del curso</strong><span>Índice de actividades</span></a>
+      <a class="activity-item" href="actividad-1-rufio.html" aria-current="page"><strong>Actividad 1</strong><span>Perfil del Ingeniero Industrial y Funciones</span></a>
+      <p class="activity-soon"><strong>Actividad 2, 3 y siguientes</strong><br>Próximamente disponibles.</p>
+    </div>
+  </div>
   <div class="slide-dots" aria-label="Navegación por diapositivas"></div>
   <nav class="slide-nav" aria-label="Controles de presentación"><button type="button" id="previous" aria-label="Diapositiva anterior">←</button><span class="slide-count" aria-live="polite"></span><button type="button" id="next" aria-label="Diapositiva siguiente">→</button></nav>
   <script>
@@ -73,6 +93,10 @@
     function showSlide(index) { currentSlide = (index + slides.length) % slides.length; slides.forEach((slide, slideIndex) => { const active = slideIndex === currentSlide; slide.classList.toggle('is-active', active); slide.setAttribute('aria-hidden', String(!active)); }); [...dots.children].forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === currentSlide))); count.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`; }
     document.querySelector('#previous').addEventListener('click', () => showSlide(currentSlide - 1));
     document.querySelector('#next').addEventListener('click', () => showSlide(currentSlide + 1));
+    const activitySwitcher = document.querySelector('#activity-switcher');
+    const activityToggle = document.querySelector('#activity-toggle');
+    activityToggle.addEventListener('click', () => { const open = activitySwitcher.classList.toggle('is-open'); activityToggle.setAttribute('aria-expanded', String(open)); });
+    document.addEventListener('click', event => { if (!activitySwitcher.contains(event.target)) { activitySwitcher.classList.remove('is-open'); activityToggle.setAttribute('aria-expanded', 'false'); } });
     document.addEventListener('keydown', event => { const target = event.target; if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target.isContentEditable) return; if (event.key === 'ArrowRight' || event.key === ' ') { event.preventDefault(); showSlide(currentSlide + 1); } if (event.key === 'ArrowLeft') { event.preventDefault(); showSlide(currentSlide - 1); } if (event.key === 'Home') { event.preventDefault(); showSlide(0); } if (event.key === 'End') { event.preventDefault(); showSlide(slides.length - 1); } });
     showSlide(0);
   </script>
